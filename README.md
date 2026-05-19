@@ -28,17 +28,6 @@ The model predicts student scores based on study hours and sleep hours.
 - UV
 
 ---
-## Clone the repository
-
-```bash
-git clone https://github.com/muthuselvi-20/ScholarX.git
-```
-
-## Install the packages and dependencies
-
-```bash
-uv sync
-```
 
 ## Run API
 
