@@ -16,7 +16,7 @@ Built a Machine Learning inference API using FastAPI and Scikit-learn to serve r
 
 Built a Machine Learning based Depression Prediction System using Scikit-learn and FastAPI with a Feature Validation Pipeline for validating user input data before prediction. Integrated Evidently AI for data drift detection and monitoring to improve model reliability and production readiness.
 
-### Features
+**Features**
 
 * Depression prediction using Machine Learning
 * Feature validation pipeline
