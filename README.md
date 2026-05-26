@@ -1,12 +1,9 @@
-# Build Model with Feature Validation Pipeline
-
+# Build a feature validation pipeline
 ## Project Overview
 
--This project is a Machine Learning based Depression Prediction System integrated with a Feature Validation Pipeline and Data Drift Detection.
-
--The system validates incoming user data before sending it to the trained model for prediction. This helps improve model reliability and prevents incorrect predictions caused by invalid or poor-quality data.
-
--The project also uses Evidently AI for monitoring and detecting data drift between training data and new incoming data.
+- This project is a Machine Learning based Depression Prediction System integrated with a Feature Validation Pipeline and Data Drift Detection.
+- The system validates incoming user data before sending it to the trained model for prediction. This helps improve model reliability and prevents incorrect predictions caused by invalid or poor-quality data.
+- The project also uses Evidently AI for monitoring and detecting data drift between training data and new incoming data.
 
 ---
 
@@ -53,50 +50,6 @@ Prediction Result
 
 ---
 
-# Installation
-
-## Clone the Repository
-
-```bash
-git clone <repository-url>
-```
-
-## Navigate to Project Folder
-
-```bash
-cd Depression_Model_Project
-```
-
-## Create Virtual Environment
-
-```bash
-python -m venv .venv
-```
-
-## Activate Virtual Environment
-
-### Windows
-
-```bash
-.venv\Scripts\activate
-```
-
-### Linux / Mac
-
-```bash
-source .venv/bin/activate
-```
-
----
-
-# Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
 # Requirements
 
 ```text
@@ -107,41 +60,6 @@ uvicorn
 joblib
 pydantic
 evidently
-imbalanced-learn
-```
-
----
-
-# Dataset
-
-The dataset contains features related to user behavior and lifestyle patterns.
-
-### Example Features
-
-* age
-* gender
-* daily_social_media_hours
-* platform_usage
-* sleep_hours
-
-### Target Column
-
-* depression
-
----
-
-# Model Training
-
-Run the following command to train the model:
-
-```bash
-python train_model.py
-```
-
-The trained model will be saved as:
-
-```text
-depression_model.pkl
 ```
 
 ---
@@ -159,7 +77,7 @@ The validation pipeline checks:
 Validation is handled separately in:
 
 ```text
-validation.py
+validate.py
 ```
 
 ---
@@ -174,13 +92,13 @@ Evidently AI is used to compare:
 Run:
 
 ```bash
-python drift_detection.py
+python data_drift.py
 ```
 
 The generated report will be saved as:
 
 ```text
-reports/drift_report.html
+data_drift_report.html
 ```
 
 Open the HTML file in a browser to view:
@@ -189,7 +107,6 @@ Open the HTML file in a browser to view:
 * Statistical comparison
 * Data distribution changes
 * Missing value analysis
-
 ---
 
 # Run FastAPI Server
@@ -197,6 +114,7 @@ Open the HTML file in a browser to view:
 ```bash
 uvicorn app:app --reload
 ```
+<img width="1920" height="1020" alt="Screenshot 2026-05-26 145615" src="https://github.com/user-attachments/assets/302da36c-4cc1-484d-b4ba-3ecbab287383" />
 
 ---
 
@@ -212,96 +130,33 @@ Swagger UI will open automatically.
 
 ---
 
-# Example Input
+# Example Input [without error]
 
-```json
-{
-  "age": 21,
-  "gender": 1,
-  "daily_social_media_hours": 6,
-  "platform_usage": 2,
-  "sleep_hours": 5
-}
-```
+<img width="1854" height="540" alt="Screenshot 2026-05-26 150438" src="https://github.com/user-attachments/assets/98e3368e-d30b-488b-a886-a721574db9d3" />
 
 ---
+# Example Output [without error]
 
-# Example Output
-
-```json
-{
-  "prediction": "Depression Detected"
-}
-```
+<img width="1134" height="131" alt="Screenshot 2026-05-26 150448" src="https://github.com/user-attachments/assets/9b92a3a6-900c-4854-b888-b65f288588c0" />
 
 ---
+# Example Input [with error]
 
+<img width="1738" height="475" alt="Screenshot 2026-05-26 155141" src="https://github.com/user-attachments/assets/3892c440-6fc8-409c-8ca6-bec30a9bf7e0" />
+
+---
 # Validation Error Example
 
-```json
-{
-  "validation_errors": [
-    "Invalid sleep hours found"
-  ]
-}
-```
+<img width="1681" height="204" alt="Screenshot 2026-05-26 155203" src="https://github.com/user-attachments/assets/3ed0e5b3-3870-4c46-834d-754058a3ae30" />
+
+
+---
+# Data drift Report [Evidently Ai]
+
+<img width="1920" height="1020" alt="Screenshot 2026-05-26 160033" src="https://github.com/user-attachments/assets/3f32b771-9b5d-4968-bab8-4a81e62cd959" />
 
 ---
 
-# Machine Learning Workflow
-
-```text
-Dataset
-   ↓
-Feature Validation
-   ↓
-Data Cleaning
-   ↓
-Train-Test Split
-   ↓
-Model Training
-   ↓
-Model Evaluation
-   ↓
-Data Drift Detection
-   ↓
-API Deployment
-```
+<img width="1920" height="1020" alt="Screenshot 2026-05-26 160013" src="https://github.com/user-attachments/assets/c28c783a-f73a-4eff-b47f-ce1203239532" />
 
 ---
-
-# Model Evaluation
-
-The project evaluates the model using:
-
-* Accuracy
-* Precision
-* Recall
-* F1-score
-* Classification Report
-
----
-
-# Handling Class Imbalance
-
-The project uses:
-
-* SMOTE
-* Class balancing techniques
-
-to improve recall for minority depression cases.
-
----
-
-# Future Improvements
-
-* Streamlit Dashboard
-* Docker Deployment
-* Cloud Deployment
-* MLflow Integration
-* CI/CD Pipeline
-* Real-Time Monitoring
-* Database Integration
-
----
-
